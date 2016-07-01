@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[JavaScript读书笔记--基本概念]]></title>
+      <title><![CDATA[JavaScript读书笔记(一)]]></title>
       <url>http://yy709593266.github.io/blog/2016/07/01/2016-07-01/</url>
       <content type="html"><![CDATA[<p>《JavaScript高级程序设计》第三章-基本概念<br><!-- ##标题，####下一级标题 --><br><a id="more"></a></p>
 <h2 id="延迟脚本defer和异步脚本aysnc"><a href="#延迟脚本defer和异步脚本aysnc" class="headerlink" title="延迟脚本defer和异步脚本aysnc"></a>延迟脚本defer和异步脚本aysnc</h2><p>按照惯例，所有<code>&lt;script&gt;</code>元素都应该在页面的<code>&lt;head&gt;</code>元素中。但是，这种做法，意味着必须等到全部JavaScript代码都被下载、解析和执行完成以后，才能开始呈现页面的内容。如果某个页面需要很多JavaScript代码，这种做法就会导致浏览器在呈现页面时出现明显的延迟，延迟期间的浏览器窗口中显示是空白的。为了避免这个问题，现在Web应用程序一般都把全部JavaScript引用放在<code>&lt;body&gt;</code>元素中所有内容的最后。现在，script可以通过添加<code>async</code>或<code>defer</code>属性来让脚本不必同步执行，这两个属性都不会暂停HTML解析就立刻被下载。</p>
