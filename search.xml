@@ -4,6 +4,18 @@
   
     
     <entry>
+      <title><![CDATA[延迟脚本defer和异步脚本async]]></title>
+      <url>http://yy709593266.github.io/blog/2016/07/01/2016-07-01/</url>
+      <content type="html"><![CDATA[<p>按照惯例，所有<code>&lt;script&gt;</code>元素都应该在页面的<code>&lt;head&gt;</code>元素中。但是，这种做法，意味着必须等到全部JavaScript代码都被下载、解析和执行完成以后，才能开始呈现页面的内容。如果某个页面需要很多JavaScript代码，这种做法就会导致浏览器在呈现页面时出现明显的延迟，延迟期间的浏览器窗口中显示是空白的。为了避免这个问题，现在Web应用程序一般都把全部JavaScript引用放在<code>&lt;body&gt;</code>元素中所有内容的最后。现在，script可以通过添加<code>async</code>或<code>defer</code>属性来让脚本不必同步执行，这两个属性都不会暂停HTML解析就立刻被下载。<a id="more"></a></p>
+<h4 id="延迟脚本defer"><a href="#延迟脚本defer" class="headerlink" title="延迟脚本defer"></a>延迟脚本defer</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;script defer src=&quot;js/index1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script defer src=&quot;js/index2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	//code</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>defer脚本是按照加载script脚本文件的顺序执行脚本的。</p>
+<h4 id="aysnc异步脚本"><a href="#aysnc异步脚本" class="headerlink" title="aysnc异步脚本"></a>aysnc异步脚本</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;script aysnc src=&quot;js/index1.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">	&lt;script aysnc src=&quot;js/index2.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">	//code</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure>
+<p>aysnc脚本在script文件下载完成之后就立即执行，这意味着多个aysnc脚本很可能不会按其在页面中的出现顺序执行</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>defer和aysnc在网络下载这块是一样的，它们都是异步的(相对于HTML解析)，它们的差别在于脚本下载完之后何时执行，显然defer是最接近我们对于应用脚本加载和执行的要求的。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[从插件开发了解jQuery源码]]></title>
       <url>http://yy709593266.github.io/blog/2016/06/23/2016-06-23/</url>
       <content type="html"><![CDATA[<p>想要开发jQuery插件，首先必须了解并熟悉jQuery源码，了解它的整体架构以及方法的实现，这里主要对jQuery插件开发相关的方法并加上自己的理解来进行阐述jQuery源码相关知识，从而让你找到适合自己的方法去理解和开发一个jQuery插件。<a id="more"></a></p>
