@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[第一个Vue程序]]></title>
+      <title><![CDATA[Hello Vue!]]></title>
       <url>http://yy709593266.github.io/blog/2016/07/08/2016-07-08/</url>
       <content type="html"><![CDATA[<p>其实看<a href="http://cn.vuejs.org/guide/" target="_blank" rel="external">vue的教程</a>我们知道，可以像使用jQuery一样来使用vue.js，即直接使用<code>&lt;script&gt;&lt;/script&gt;</code>标签加载进去就可以使用它了，这里主要讲的是使用npm安装vue的时候我遇到一些问题 <a id="more"></a></p>
 <h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><p>1、首先保证你已经安装了node和npm<br>2、打开Git，映射npm到cnpm<br><code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br>3、安装vue-cli<br><code>$ cnpm i -g vue-cli</code><br>4、<code>cd</code>到一个你放置项目的文件夹，创建webpack项目并且下载依赖<br><code>$ vue init webpack hellovue</code><br>出现的选项可以直接点击enter跳过<br>5、定位到项目中<br><code>$ cd hellovue</code><br>6、安装依赖模块<br><code>$ cnpm i</code><br>7、运行应用<br><code>$ cnpm run dev</code><br>现在可以在<code>localhost:8080</code>上查看我们的应用了。<br>注：如果这时候需要使用npm安装其他的库，比如路由和XHR库的话，需要重新打开一个Git窗口</p>
