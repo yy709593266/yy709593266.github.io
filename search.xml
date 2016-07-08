@@ -4,6 +4,13 @@
   
     
     <entry>
+      <title><![CDATA[JavaScript读书笔记(二)]]></title>
+      <url>http://yy709593266.github.io/blog/2016/07/08/2016-07-08/</url>
+      <content type="html"><![CDATA[<p>《JavaScript高级程序设计》第四章-变量、作用域和内存问题<br><a id="more"></a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[JavaScript读书笔记(一)]]></title>
       <url>http://yy709593266.github.io/blog/2016/07/08/2016-07-01/</url>
       <content type="html"><![CDATA[<p>《JavaScript高级程序设计》第三章-基本概念<br><a id="more"></a></p>
@@ -129,13 +136,6 @@
 <p>由于这种机制，一个函数可以根据传递进来不同的参数个数执行不同的statements。<br>关于arguments，它的值永远与对应命名参数的值保持同步，栗如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function Add(num1, num2)&#123;</span><br><span class="line">	arguments[1] = 10;</span><br><span class="line">	console.log(arguments[0] + num2);</span><br><span class="line">&#125;</span><br><span class="line">Add(10, 20);			//20</span><br></pre></td></tr></table></figure></p>
 <p>修改arguments[1]也就修改了num2，结果它们的值都会变成10，不过这不是说读取这两个值访问相同的内存空间哈，它们的内存空间是独立的，但是值会同步，而且是单向同步，即修改命名参数不会改变arguments中对应的值。如果调用时只传入了一个参数，那么num2的值就是undefined</p>
 <h4 id="没有重载"><a href="#没有重载" class="headerlink" title="没有重载"></a>没有重载</h4><p>Java重载是可以为一个函数编写两个定义，只要这两个定义接受的参数类型和数量不同即可。JavaScript中没有重载，如果定义了两个相同名字的函数，则该名字只属于后定义的函数，即后定义的函数会覆盖前面的函数。理解函数的参数，我们可以通过检查传入函数中参数类型和数量作出不同的反应，这样来模仿重载的方法。</p>
-]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[JavaScript读书笔记(二)]]></title>
-      <url>http://yy709593266.github.io/blog/2016/07/08/2016-07-08/</url>
-      <content type="html"><![CDATA[<p>《JavaScript高级程序设计》第四章-变量、作用域和内存问题<br><a id="more"></a></p>
 ]]></content>
     </entry>
     
