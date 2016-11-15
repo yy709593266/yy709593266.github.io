@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="-vue," />
+  <meta name="keywords" content="-继承," />
 
 
 
@@ -84,18 +84,22 @@
 
 
 
-<meta name="description" content="其实看vue的教程我们知道，可以像使用jQuery一样来使用vue.js，即直接使用&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;标签加载进去就可以使用它了，这里主要讲的是使用npm安装vue的时候我遇到一些问题">
+<meta name="description" content="javascript在ES6之前，我们通过构造函数来创造一个类，并且通过原型来扩展属性，然后可以这样实现继承，这里主要说明这种继承方式各个构造函数原型之间的关系，顺便聊聊如何通过ES6实现继承。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello Vue!">
-<meta property="og:url" content="http://yy709593266.github.io/blog/2016/07/08/20160708(helloVue)/index.html">
+<meta property="og:title" content="javascript继承">
+<meta property="og:url" content="http://yy709593266.github.io/blog/2016/08/29/20160829(javascript继承)/index.html">
 <meta property="og:site_name" content="袁媛-噢嘛呢嘛呢呗呗哄">
-<meta property="og:description" content="其实看vue的教程我们知道，可以像使用jQuery一样来使用vue.js，即直接使用&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;标签加载进去就可以使用它了，这里主要讲的是使用npm安装vue的时候我遇到一些问题">
-<meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/23BF.tmp.jpg">
-<meta property="og:updated_time" content="2016-11-10T02:13:19.000Z">
+<meta property="og:description" content="javascript在ES6之前，我们通过构造函数来创造一个类，并且通过原型来扩展属性，然后可以这样实现继承，这里主要说明这种继承方式各个构造函数原型之间的关系，顺便聊聊如何通过ES6实现继承。">
+<meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-1.jpg">
+<meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-2.jpg">
+<meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-3.jpg">
+<meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-4.jpg">
+<meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-5.jpg">
+<meta property="og:updated_time" content="2016-11-15T11:09:32.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello Vue!">
-<meta name="twitter:description" content="其实看vue的教程我们知道，可以像使用jQuery一样来使用vue.js，即直接使用&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;标签加载进去就可以使用它了，这里主要讲的是使用npm安装vue的时候我遇到一些问题">
-<meta name="twitter:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/23BF.tmp.jpg">
+<meta name="twitter:title" content="javascript继承">
+<meta name="twitter:description" content="javascript在ES6之前，我们通过构造函数来创造一个类，并且通过原型来扩展属性，然后可以这样实现继承，这里主要说明这种继承方式各个构造函数原型之间的关系，顺便聊聊如何通过ES6实现继承。">
+<meta name="twitter:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-1.jpg">
 
 
 
@@ -116,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="http://yy709593266.github.io/blog/2016/07/08/20160708(helloVue)/"/>
+  <link rel="canonical" href="http://yy709593266.github.io/blog/2016/08/29/20160829(javascript继承)/"/>
 
-  <title> Hello Vue! | 袁媛-噢嘛呢嘛呢呗呗哄 </title>
+  <title> javascript继承 | 袁媛-噢嘛呢嘛呢呗呗哄 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -281,7 +285,7 @@
             
             
               
-                Hello Vue!
+                javascript继承
               
             
           </h1>
@@ -293,8 +297,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-08T17:28:26+08:00" content="2016-07-08">
-              2016-07-08
+            <time itemprop="dateCreated" datetime="2016-08-29T17:28:26+08:00" content="2016-08-29">
+              2016-08-29
             </time>
           </span>
 
@@ -321,11 +325,17 @@
       
 
       
-        <p>其实看<a href="http://cn.vuejs.org/guide/" target="_blank" rel="external">vue的教程</a>我们知道，可以像使用jQuery一样来使用vue.js，即直接使用<code>&lt;script&gt;&lt;/script&gt;</code>标签加载进去就可以使用它了，这里主要讲的是使用npm安装vue的时候我遇到一些问题 <a id="more"></a></p>
-<h3 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h3><p>1、首先保证你已经安装了node和npm<br>2、打开Git，映射npm到cnpm<br><code>$ npm install -g cnpm --registry=https://registry.npm.taobao.org</code><br>3、安装vue-cli<br><code>$ cnpm i -g vue-cli</code><br>4、<code>cd</code>到一个你放置项目的文件夹，创建webpack项目并且下载依赖<br><code>$ vue init webpack hellovue</code><br>出现的选项可以直接点击enter跳过<br>5、定位到项目中<br><code>$ cd hellovue</code><br>6、安装依赖模块<br><code>$ cnpm i</code><br>7、运行应用<br><code>$ cnpm run dev</code><br>现在可以在<code>localhost:8080</code>上查看我们的应用了。<br>注：如果这时候需要使用npm安装其他的库，比如路由和XHR库的话，需要重新打开一个Git窗口</p>
-<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>我运行的时候出现的是空白页，而且控制台报错了，说<code>main.js</code>文件中的import错误:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import Vue from &apos;vue&apos;</div><div class="line">import App from &apos;./App&apos;</div></pre></td></tr></table></figure></p>
-<p>这里我们需要使用require加载<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var Vue = require(&apos;vue&apos;);</div><div class="line">var App = require(&apos;./App.vue&apos;);</div></pre></td></tr></table></figure></p>
-<p>这样就能正常运行第一个vue程序Hello World!了。<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/23BF.tmp.jpg" alt=""><br>后面就在里面添加内容或者文件就行了。</p>
+        <p>javascript在ES6之前，我们通过构造函数来创造一个类，并且通过原型来扩展属性，然后可以这样实现继承，这里主要说明这种继承方式各个构造函数原型之间的关系，顺便聊聊如何通过ES6实现继承。<a id="more"></a></p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function Person(name, age, sex)&#123;</div><div class="line">	this.name = name;</div><div class="line">	this.age = age;</div><div class="line">	this.sex = sex;</div><div class="line">&#125;</div><div class="line">Person.prototype.personLogAge = function()&#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let person1 = new Person(&apos;xiao&apos;, 20, &apos;male&apos;);</div><div class="line">console.log(person1);</div></pre></td></tr></table></figure>
+<p>实例化一个Person命名为person1：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-1.jpg" alt=""><br>一个对象A的<code>_proto_</code>属性指向的那个对象B就是它的原型对象（或者叫上级对象，父对象）。</p>
+<h3 id="继承－1"><a href="#继承－1" class="headerlink" title="继承－1"></a>继承－1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">function Person(name, age, gender) &#123;</div><div class="line">	this.name = name;</div><div class="line">	this.age = age;</div><div class="line">	this.gender = gender;</div><div class="line">&#125;</div><div class="line">Person.prototype.personLogAge = function()&#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Personal(name, age, gender, occupation, hobby) &#123;</div><div class="line">	Person.call(this, name, age, gender);</div><div class="line">	this.occupation = occupation;</div><div class="line">	this.hobby = hobby;</div><div class="line">&#125;</div><div class="line">Personal.prototype = Object.create(Person.prototype);</div><div class="line">// Personal.prototype.constructor = Personal;		//显示声明Personal类的constructor</div><div class="line">Personal.prototype.personalLogAge = function()&#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let person1 = new Person(&apos;xiao&apos;, 20, &apos;male&apos;);</div><div class="line">console.log(person1);</div><div class="line">let personal1 = new Personal(&apos;yuan&apos;, 17, &apos;female&apos;, &apos;web&apos;, &apos;travel&apos;);</div><div class="line">console.log(personal1);</div></pre></td></tr></table></figure>
+<p>实例化一个Personal命名为personal1:<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-2.jpg" alt=""><br><code>Object.create()</code>是一种新的对象创建方式，第一个参数必需，要用作原型的对象，第二个参数可选，包含一个或多个属性描述符的javascript对象。</p>
+<h3 id="继承－2"><a href="#继承－2" class="headerlink" title="继承－2"></a>继承－2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">function Person(name, age, gender) &#123;</div><div class="line">	this.name = name;</div><div class="line">	this.age = age;</div><div class="line">	this.gender = gender;</div><div class="line">&#125;</div><div class="line">Person.prototype.personLogAge = function()&#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Personal(name, age, gender, occupation, hobby)&#123;</div><div class="line">	Person.call(this, name, age, gender);</div><div class="line">	this.occupation = occupation;</div><div class="line">	this.hobby = hobby;</div><div class="line">&#125;</div><div class="line">Personal.prototype = Object.create(Person.prototype);</div><div class="line">Personal.prototype.constructor = Personal;</div><div class="line">Personal.prototype.personalLogAge = function()&#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">function Biology(name, age, gender, occupation, hobby) &#123;</div><div class="line">	Personal.call(this, name, age, gender, occupation, hobby);</div><div class="line">&#125;</div><div class="line">Biology.prototype = Object.create(Personal.prototype);</div><div class="line">Biology.prototype.constructor = Biology;</div><div class="line">Biology.prototype.biologyLogAge = function()&#123;</div><div class="line">	console.log(this.age);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let person1 = new Person(&apos;xiao&apos;, 20, &apos;male&apos;);</div><div class="line">console.log(person1);</div><div class="line"></div><div class="line">let personal1 = new Personal(&apos;yuan&apos;, 17, &apos;female&apos;, &apos;web&apos;, &apos;travel&apos;);</div><div class="line">console.log(personal1);</div><div class="line"></div><div class="line">let biology = new Biology(&apos;yuan&apos;, 17, &apos;female&apos;, &apos;web&apos;, &apos;travel&apos;)</div><div class="line">console.log(biology1);</div></pre></td></tr></table></figure>
+<p>实例化一个Biology命名为biology1：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-3.jpg" alt=""><br>以此类推实现继承。</p>
+<h3 id="ES6类"><a href="#ES6类" class="headerlink" title="ES6类"></a>ES6类</h3><p>ES6中出现了类的概念，ES6提供了更多的语法躺，可以直接创造一个类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">class Person &#123;</div><div class="line">	constructor(name, age, sex) &#123;</div><div class="line">		this.name = name;</div><div class="line">		this.age = age;</div><div class="line">		this.sex = sex;</div><div class="line">	&#125;</div><div class="line">	personLogAge()&#123;</div><div class="line">		console.log(this.age);</div><div class="line">	&#125;</div><div class="line">	personLogName()&#123;</div><div class="line">		console.log(this.name);</div><div class="line">	&#125;</div><div class="line">	personLogSex()&#123;</div><div class="line">		console.log(this.sex);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let person1 = new Person(&apos;yuan&apos;, 17, &apos;female&apos;);</div><div class="line">console.log(person1);</div></pre></td></tr></table></figure></p>
+<p>通过ES6方法定义一个类，实例化一个Person命名为person1：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-4.jpg" alt=""><br>ES6方法写的类内部所有定义的方法都是不可枚举的（non－enumberable），这也就是为什么实例只能看到它的属性值，使用<code>Object.keys(person1)</code>可以看到可以枚举的属性只有<code>[&quot;name&quot;, &quot;age&quot;, &quot;sex&quot;]</code>，这一点和ES5行为不一致。</p>
+<h3 id="ES6继承"><a href="#ES6继承" class="headerlink" title="ES6继承"></a>ES6继承</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">class Person &#123;</div><div class="line">	constructor(name, age, sex) &#123;</div><div class="line">		this.name = name;</div><div class="line">		this.age = age;</div><div class="line">		this.sex = sex;</div><div class="line">	&#125;</div><div class="line">	personLogAge()&#123;</div><div class="line">		console.log(this.age);</div><div class="line">	&#125;</div><div class="line">	personLogName()&#123;</div><div class="line">		console.log(this.name);</div><div class="line">	&#125;</div><div class="line">	personLogSex()&#123;</div><div class="line">		console.log(this.sex);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Personal extends Person &#123;</div><div class="line">	constructor(name, age, sex, occupation, hobby) &#123;</div><div class="line">		super(name, age, sex);</div><div class="line">		this.occupation = occupation;</div><div class="line">		this.hobby = hobby;</div><div class="line">	&#125;</div><div class="line">	personalLogAge()&#123;</div><div class="line">		console.log(this.age);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">let person1 = new Person(&apos;yuan&apos;, 17, &apos;female&apos;);</div><div class="line">console.log(person1);</div><div class="line">let personal1 = new Personal(&apos;xiao&apos;, 21, &apos;male&apos;, &apos;web&apos;, &apos;coding&apos;);</div><div class="line">console.log(personal1);</div></pre></td></tr></table></figure>
+<p>Personal类继承了Person类，实例化一个Personal命名为personal1：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/20160829-5.jpg" alt=""></p>
 
       
     </div>
@@ -347,7 +357,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vue/" rel="tag">#-vue</a>
+            <a href="/tags/继承/" rel="tag">#-继承</a>
           
         </div>
       
@@ -356,16 +366,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/23/20160623(jQuery-插件)/" rel="next" title="从插件开发了解jQuery源码">
-                <i class="fa fa-chevron-left"></i> 从插件开发了解jQuery源码
+              <a href="/2016/08/03/20160803(IE9-jQuery-ajax)/" rel="next" title="IE9-jQuery-ajax">
+                <i class="fa fa-chevron-left"></i> IE9-jQuery-ajax
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/26/20160726(ajaxFileUpload图片上传)/" rel="prev" title="ajaxFileUpload插件上传图片">
-                ajaxFileUpload插件上传图片 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/04/20160904(psd-css)/" rel="prev" title="从psd photo到css style">
+                从psd photo到css style <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -473,7 +483,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装步骤"><span class="nav-number">1.</span> <span class="nav-text">安装步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#问题"><span class="nav-number">2.</span> <span class="nav-text">问题</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">1.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承－1"><span class="nav-number">2.</span> <span class="nav-text">继承－1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继承－2"><span class="nav-number">3.</span> <span class="nav-text">继承－2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6类"><span class="nav-number">4.</span> <span class="nav-text">ES6类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES6继承"><span class="nav-number">5.</span> <span class="nav-text">ES6继承</span></a></li></ol></div>
             
           </div>
         </section>
