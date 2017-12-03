@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷。">
+<meta name="description" content="ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷；对数值的扩展主要是新增和对传统的数值函数进行了修改的使用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6字符串的扩展">
-<meta property="og:url" content="http://yy709593266.github.io/blog/2017/10/22/20171022-ES6字符串的扩展/index.html">
+<meta property="og:title" content="ES6字符串和数值的扩展">
+<meta property="og:url" content="http://yy709593266.github.io/blog/2017/10/22/20171022-ES6字符串和数值的扩展/index.html">
 <meta property="og:site_name" content="袁媛-仙女很忙">
-<meta property="og:description" content="ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷。">
-<meta property="og:updated_time" content="2017-10-22T14:19:52.000Z">
+<meta property="og:description" content="ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷；对数值的扩展主要是新增和对传统的数值函数进行了修改的使用。">
+<meta property="og:updated_time" content="2017-10-23T14:24:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6字符串的扩展">
-<meta name="twitter:description" content="ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷。">
+<meta name="twitter:title" content="ES6字符串和数值的扩展">
+<meta name="twitter:description" content="ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷；对数值的扩展主要是新增和对传统的数值函数进行了修改的使用。">
 
 
 
@@ -114,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yy709593266.github.io/blog/2017/10/22/20171022-ES6字符串的扩展/"/>
+  <link rel="canonical" href="http://yy709593266.github.io/blog/2017/10/22/20171022-ES6字符串和数值的扩展/"/>
 
-  <title> ES6字符串的扩展 | 袁媛-仙女很忙 </title>
+  <title> ES6字符串和数值的扩展 | 袁媛-仙女很忙 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
             
             
               
-                ES6字符串的扩展
+                ES6字符串和数值的扩展
               
             
           </h1>
@@ -319,8 +319,8 @@
       
 
       
-        <p>ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷。<a id="more"></a></p>
-<p>1、ES6为字符串添加了遍历接口，使得字符串可以被<code>for...of</code>循环便利(相比传统的<code>for</code>循环最大的优点是可以识别大于<code>0xFFFF</code>的码点):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for (let codePoint of &apos;foo&apos;) &#123;</div><div class="line">  console.log(codePoint)</div><div class="line">&#125;</div><div class="line">// &quot;f&quot;</div><div class="line">// &quot;o&quot;</div><div class="line">// &quot;o&quot;</div></pre></td></tr></table></figure></p>
+        <p>ES6对字符串及其操作进行了扩展，使得操作字符串变得更加方便快捷；对数值的扩展主要是新增和对传统的数值函数进行了修改的使用。<a id="more"></a></p>
+<h3 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h3><p>1、ES6为字符串添加了遍历接口，使得字符串可以被<code>for...of</code>循环便利(相比传统的<code>for</code>循环最大的优点是可以识别大于<code>0xFFFF</code>的码点):<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">for (let codePoint of &apos;foo&apos;) &#123;</div><div class="line">  console.log(codePoint)</div><div class="line">&#125;</div><div class="line">// &quot;f&quot;</div><div class="line">// &quot;o&quot;</div><div class="line">// &quot;o&quot;</div></pre></td></tr></table></figure></p>
 <p>2、<code>at()</code><br>返回字符串给定位置的字符（相比传统的<code>chatAt()</code>方法可以识别大于<code>0xFFFF</code>的码点，返回正确的字符）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&apos;abc&apos;.at(0) // &quot;a&quot;</div></pre></td></tr></table></figure></p>
 <p>3、<code>includes()</code>, <code>startsWith()</code>, <code>endsWith()</code><br><code>includes()</code>：返回布尔值，表示是否找到了参数字符串;<br><code>startsWith()</code>：返回布尔值，表示参数字符串是否在原字符串的头部;<br><code>endsWith()</code>：返回布尔值，表示参数字符串是否在原字符串的尾部。<br>这三个函数都支持第二个参数，表示开始搜索的位置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let s = &apos;Hello world!&apos;;</div><div class="line"></div><div class="line">s.startsWith(&apos;world&apos;, 6) // true</div><div class="line">s.endsWith(&apos;Hello&apos;, 5) // true</div><div class="line">s.includes(&apos;Hello&apos;, 6) // false</div></pre></td></tr></table></figure></p>
 <p>值得注意的是：使用第二个参数n时，<code>endsWith</code>的行为与其他两个方法有所不同,它针对前n个字符，而其他两个方法针对从第n个位置直到字符串结束。</p>
@@ -360,6 +360,7 @@
 <p>7、<code>String.raw()</code><br>ES6的原生字符串都有一个<code>raw</code>方法，返回一个斜杠都被转义（即斜杠前面再加一个斜杠）的字符串，对应于替换变量后的模板字符串，如果原字符串的斜杠已经转义，那么<code>String.raw</code>不会做任何处理:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">String.raw`Hi\n$&#123;2+3&#125;!`;</div><div class="line">// &quot;Hi\\n5!&quot;</div><div class="line"></div><div class="line">String.raw`Hi\\n`</div><div class="line">// &quot;Hi\\n&quot;</div></pre></td></tr></table></figure></p>
 <p><code>String.raw</code>函数的代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">String.raw = function (strings, ...values) &#123;</div><div class="line">  let output = &quot;&quot;;</div><div class="line">  for (let index = 0; index &lt; values.length; index++) &#123;</div><div class="line">    output += strings.raw[index] + values[index];</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  output += strings.raw[index]</div><div class="line">  return output;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>因此，当该函数作为作为正常的普通函数使用时，第一个参数应该是一个具有<code>raw</code>属性的对象，且<code>raw</code>属性的值应该是一个数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">String.raw(&#123; raw: &apos;test&apos; &#125;, 0, 1, 2);</div><div class="line">// &apos;t0e1s2t&apos;</div><div class="line"></div><div class="line">// 等同于</div><div class="line">String.raw(&#123; raw: [&apos;t&apos;,&apos;e&apos;,&apos;s&apos;,&apos;t&apos;] &#125;, 0, 1, 2);</div></pre></td></tr></table></figure></p>
+<h3 id="数值的扩展"><a href="#数值的扩展" class="headerlink" title="数值的扩展"></a>数值的扩展</h3><p>1、ES6提供了二进制和八进制数值的新的写法，分别用前缀<code>0b</code>（或<code>0B</code>）和<code>0o</code>（或<code>0O</code>）表示;<br>2、在<code>Number</code>对象上，新提供了<code>Number.isFinite()</code>和<code>Number.isNaN()</code>两个方法,与传统的全局方法<code>isFinite()</code>和<code>isNaN()</code>的区别在于，传统方法先调用<code>Number()</code>将非数值的值转为数值，再进行判断，而这两个新方法只对数值有效，<code>Number.isFinite()</code>对于非数值一律返回<code>false</code>, <code>Number.isNaN()</code>只有对于<code>NaN</code>才返回<code>true</code>，非<code>NaN</code>一律返回<code>false</code>;<br>3、ES6将全局方法<code>parseInt()</code>和<code>parseFloat()</code>移植到<code>Number</code>对象上面，行为完全保持不变（逐步减少全局性方法，使得语言逐步模块化）;<br>4、<code>Number.isInteger()</code>用来判断一个值是否为整数;<br>5、<code>Math.trunc</code>方法用于去除一个数的小数部分，返回整数部分（对于非数值，内部使用<code>Number</code>方法将其转为数值，对于空值和无法截取整数的值，返回<code>NaN</code>）;<br>6、<code>Math.sign</code>方法用来判断一个数到底是正数、负数、还是零(对于非数值，会先将其转换为数值，无法转为数值的值，会返回<code>NaN</code>);<br>7、<code>Math.cbrt</code>方法用于计算一个数的立方根（对于非数值，内部使用<code>Number</code>方法将其转为数值，对于空值和无法截取整数的值，返回<code>NaN</code>）;<br>8、ES6还新增了一些数值的计算方法，如<code>Math.hypot</code>方法返回所有参数的平方和的平方根(对于非数值，内部使用<code>Number</code>方法将其转为数值，只要有一个参数无法转为数值，就会返回<code>NaN</code>)以及一些对数相关方法，双曲函数方法，指数运算符和其他运算符等(不过用的不多，就先这些吧)…</p>
 
       
     </div>
@@ -390,13 +391,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/12/20170912-ES6常用语法/" rel="next" title="ES6常用语法">
+              <a href="/2017/09/12/20170912-ES6声明变量和解构赋值/" rel="next" title="ES6常用语法">
                 <i class="fa fa-chevron-left"></i> ES6常用语法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/23/20171023-ES6函数的扩展/" rel="prev" title="ES6函数的扩展">
+                ES6函数的扩展 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -464,7 +469,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -474,7 +479,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -503,7 +508,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#字符串的扩展"><span class="nav-number">1.</span> <span class="nav-text">字符串的扩展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数值的扩展"><span class="nav-number">2.</span> <span class="nav-text">数值的扩展</span></a></li></ol></div>
             
           </div>
         </section>
