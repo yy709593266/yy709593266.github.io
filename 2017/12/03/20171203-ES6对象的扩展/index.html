@@ -86,13 +86,13 @@
 
 <meta name="description" content="ES6对象的扩展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20171203-对象的扩展">
+<meta property="og:title" content="对象的扩展">
 <meta property="og:url" content="http://yy709593266.github.io/blog/2017/12/03/20171203-ES6对象的扩展/index.html">
 <meta property="og:site_name" content="袁媛-仙女很忙">
 <meta property="og:description" content="ES6对象的扩展">
-<meta property="og:updated_time" content="2018-01-04T15:09:03.000Z">
+<meta property="og:updated_time" content="2018-01-04T15:24:55.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="20171203-对象的扩展">
+<meta name="twitter:title" content="对象的扩展">
 <meta name="twitter:description" content="ES6对象的扩展">
 
 
@@ -116,7 +116,7 @@
 
   <link rel="canonical" href="http://yy709593266.github.io/blog/2017/12/03/20171203-ES6对象的扩展/"/>
 
-  <title> 20171203-对象的扩展 | 袁媛-仙女很忙 </title>
+  <title> 对象的扩展 | 袁媛-仙女很忙 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
             
             
               
-                20171203-对象的扩展
+                对象的扩展
               
             
           </h1>
@@ -319,19 +319,20 @@
       
 
       
-        <p>ES6对象的扩展<a id="more"></a><br>1、简洁表示法<br>属性的简洁表示法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const foo = &apos;bar&apos;;</div><div class="line">const baz = &#123;foo&#125;;</div><div class="line">baz // &#123;foo: &quot;bar&quot;&#125;</div><div class="line">// 等同于</div><div class="line">const baz = &#123;foo: foo&#125;;</div></pre></td></tr></table></figure></p>
+        <p>ES6对象的扩展<a id="more"></a></p>
+<h1 id="简洁表示法"><a href="#简洁表示法" class="headerlink" title="简洁表示法"></a>简洁表示法</h1><p>属性的简洁表示法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">const foo = &apos;bar&apos;;</div><div class="line">const baz = &#123;foo&#125;;</div><div class="line">baz // &#123;foo: &quot;bar&quot;&#125;</div><div class="line">// 等同于</div><div class="line">const baz = &#123;foo: foo&#125;;</div></pre></td></tr></table></figure></p>
 <p>方法的简洁表示法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">const o = &#123;</div><div class="line">  method() &#123;</div><div class="line">    return &quot;Hello!&quot;;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">// 等同于</div><div class="line"></div><div class="line">const o = &#123;</div><div class="line">  method: function() &#123;</div><div class="line">    return &quot;Hello!&quot;;</div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>模块输出变量就很适合使用简洁写法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">let ms = &#123;&#125;;</div><div class="line"></div><div class="line">function getItem (key) &#123;</div><div class="line">  return key in ms ? ms[key] : null;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function setItem (key, value) &#123;</div><div class="line">  ms[key] = value;</div><div class="line">&#125;</div><div class="line"></div><div class="line">function clear () &#123;</div><div class="line">  ms = &#123;&#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">module.exports = &#123; getItem, setItem, clear &#125;;</div><div class="line">// 等同于</div><div class="line">module.exports = &#123;</div><div class="line">  getItem: getItem,</div><div class="line">  setItem: setItem,</div><div class="line">  clear: clear</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>2、属性名表达式<br>ES6允许字面量方法（大括号方法）定义对象时，使用表达式作为对象的属性名(同样可以用于定义方法名)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let propKey = &apos;foo&apos;;</div><div class="line"></div><div class="line">let obj = &#123;</div><div class="line">  [propKey]: true,</div><div class="line">  [&apos;a&apos; + &apos;bc&apos;]: 123</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h1 id="属性名表达式"><a href="#属性名表达式" class="headerlink" title="属性名表达式"></a>属性名表达式</h1><p>ES6允许字面量方法（大括号方法）定义对象时，使用表达式作为对象的属性名(同样可以用于定义方法名)：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">let propKey = &apos;foo&apos;;</div><div class="line"></div><div class="line">let obj = &#123;</div><div class="line">  [propKey]: true,</div><div class="line">  [&apos;a&apos; + &apos;bc&apos;]: 123</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>如果此时的表达式是一个对象，默认情况下会自动将对象转位字符串<code>[object Object]</code>:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">const keyA = &#123;a: 1&#125;;</div><div class="line">const keyB = &#123;b: 2&#125;;</div><div class="line"></div><div class="line">const myObject = &#123;</div><div class="line">  [keyA]: &apos;valueA&apos;,</div><div class="line">  [keyB]: &apos;valueB&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">myObject // Object &#123;[object Object]: &quot;valueB&quot;&#125;</div></pre></td></tr></table></figure></p>
 <p><em>注：属性名表达式和简洁表示法不能同时使用</em></p>
-<p>3、<code>object.is()</code><br>ES6的<code>object.is()</code>方法用来比较两个值是否严格相等，与<code>===</code>基本相等，不同之处在于两个：</p>
+<h1 id="object-is"><a href="#object-is" class="headerlink" title="object.is()"></a><code>object.is()</code></h1><p>ES6的<code>object.is()</code>方法用来比较两个值是否严格相等，与<code>===</code>基本相等，不同之处在于两个：</p>
 <ul>
 <li><code>+0</code>不等于<code>-0</code></li>
 <li><code>NaN</code>等于自身<br>基础用法为：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Object.is(+0, -0) // false</div><div class="line">Object.is(NaN, NaN) // true</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>4、<code>Object.assign()</code><br><code>Object.assign(目标对象，源对象)</code>该方法用于对象的合并，将源对象的所有可枚举属性（不拷贝继承属性，不拷贝不可枚举属性）复制到目标对象上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const target = &#123; a: 1, b: 1 &#125;;</div><div class="line"></div><div class="line">const source1 = &#123; b: 2, c: 2 &#125;;</div><div class="line">const source2 = &#123; c: 3 &#125;;</div><div class="line"></div><div class="line">Object.assign(target, source1, source2);</div><div class="line">target // &#123;a:1, b:2, c:3&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign()"></a><code>Object.assign()</code></h1><p><code>Object.assign(目标对象，源对象)</code>该方法用于对象的合并，将源对象的所有可枚举属性（不拷贝继承属性，不拷贝不可枚举属性）复制到目标对象上：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const target = &#123; a: 1, b: 1 &#125;;</div><div class="line"></div><div class="line">const source1 = &#123; b: 2, c: 2 &#125;;</div><div class="line">const source2 = &#123; c: 3 &#125;;</div><div class="line"></div><div class="line">Object.assign(target, source1, source2);</div><div class="line">target // &#123;a:1, b:2, c:3&#125;</div></pre></td></tr></table></figure></p>
 <p>注意：</p>
 <ul>
 <li>如果目标对象与源对象有同名属性，则后面的属性会覆盖前面的属性</li>
@@ -350,8 +351,7 @@
 <li><p>使用该函数可以指定默认值<code>Object.assign({}, DEFAULTS, options)</code></p>
 </li>
 </ul>
-<p>5、属性的可枚举性和遍历</p>
-<ul>
+<h1 id="属性的可枚举性和遍历"><a href="#属性的可枚举性和遍历" class="headerlink" title="属性的可枚举性和遍历"></a>属性的可枚举性和遍历</h1><ul>
 <li><code>for...in</code>循环：只遍历对象自身的和继承的可枚举的属性。</li>
 <li><code>Object.keys()</code>：返回对象自身的所有可枚举的属性的键名。</li>
 <li><code>JSON.stringify()</code>：只串行化对象自身的可枚举的属性。</li>
@@ -361,12 +361,11 @@
 <li><code>Object.getOwnPropertySymbols</code>返回一个数组，包含对象自身的所有<code>Symbol</code>属性的键名。</li>
 <li><code>Reflect.ownKeys</code>返回一个数组，包含对象自身的所有键名，不管键名是<code>Symbol</code>或字符串，也不管是否可枚举。<br>注意：大多数时候，我们只关心对象自身的属性，所以，尽量不要使用<code>for...in</code>循环，而用<code>`Object.keys()</code></li>
 </ul>
-<p>6、<code>__proto__</code>属性，<code>Object.setPrototypeOf()</code>，<code>Object.getPrototypeOf()</code><br>js的对象继承是通过原型链实现的，ES6提供了更多原型对象的操作方法,如果一个对象本身部署了<code>__proto__</code>属性，该属性的值就是对象的原型，无论从语义的角度还是从兼容性的角度，都不要使用这个属性，而应该用<code>Object.setPrototypeOf()</code>（写操作）、<code>Object.getPrototypeOf()</code>（读操作）、<code>Object.create()</code>（生成操作）来代替。</p>
-<p>7、<code>super</code>关键字<br>关键字<code>super</code>指向当前对象的原型对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">const proto = &#123;</div><div class="line">  foo: &apos;hello&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const obj = &#123;</div><div class="line">  find() &#123;</div><div class="line">    return super.foo;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Object.setPrototypeOf(obj, proto);</div><div class="line">obj.find() // &quot;hello&quot;</div></pre></td></tr></table></figure></p>
+<h1 id="proto-属性，Object-setPrototypeOf-，Object-getPrototypeOf"><a href="#proto-属性，Object-setPrototypeOf-，Object-getPrototypeOf" class="headerlink" title="__proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()"></a><code>__proto__</code>属性，<code>Object.setPrototypeOf()</code>，<code>Object.getPrototypeOf()</code></h1><p>js的对象继承是通过原型链实现的，ES6提供了更多原型对象的操作方法,如果一个对象本身部署了<code>__proto__</code>属性，该属性的值就是对象的原型，无论从语义的角度还是从兼容性的角度，都不要使用这个属性，而应该用<code>Object.setPrototypeOf()</code>（写操作）、<code>Object.getPrototypeOf()</code>（读操作）、<code>Object.create()</code>（生成操作）来代替。</p>
+<h1 id="super关键字"><a href="#super关键字" class="headerlink" title="super关键字"></a><code>super</code>关键字</h1><p>关键字<code>super</code>指向当前对象的原型对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">const proto = &#123;</div><div class="line">  foo: &apos;hello&apos;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const obj = &#123;</div><div class="line">  find() &#123;</div><div class="line">    return super.foo;</div><div class="line">  &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line">Object.setPrototypeOf(obj, proto);</div><div class="line">obj.find() // &quot;hello&quot;</div></pre></td></tr></table></figure></p>
 <p>JavaScript 引擎内部，<code>super.foo</code>等同于<code>Object.getPrototypeOf(this).foo</code>（属性）或<code>Object.getPrototypeOf(this).foo.call(this)</code>（方法）,因此下面代码的结果也就能理解了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">const proto = &#123;</div><div class="line">  x: &apos;hello&apos;,</div><div class="line">  foo() &#123;</div><div class="line">    console.log(this.x);</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">const obj = &#123;</div><div class="line">  x: &apos;world&apos;,</div><div class="line">  foo() &#123;</div><div class="line">    super.foo();</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">Object.setPrototypeOf(obj, proto);</div><div class="line"></div><div class="line">obj.foo() // &quot;world&quot;</div></pre></td></tr></table></figure></p>
-<p>8、<code>Object.keys()</code>，<code>Object.values()</code>，<code>Object.entries()</code><br>前面已经说过，<code>Object.keys()</code>方法返回一个数组，成员是参数对象自身所有可遍历属性的键名，与其配套的方法<code>Object.values()</code>，<code>Object.entries()</code>作为遍历对象的补充手段，供<code>for...of</code>循环使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let &#123;keys, values, entries&#125; = Object;</div><div class="line">let obj = &#123; a: 1, b: 2, c: 3 &#125;;</div><div class="line"></div><div class="line">for (let key of keys(obj)) &#123;</div><div class="line">  console.log(key); // &apos;a&apos;, &apos;b&apos;, &apos;c&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (let value of values(obj)) &#123;</div><div class="line">  console.log(value); // 1, 2, 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (let [key, value] of entries(obj)) &#123;</div><div class="line">  console.log([key, value]); // [&apos;a&apos;, 1], [&apos;b&apos;, 2], [&apos;c&apos;, 3]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>9、对象的扩展运算符</p>
-<ul>
+<h1 id="Object-keys-，Object-values-，Object-entries"><a href="#Object-keys-，Object-values-，Object-entries" class="headerlink" title="Object.keys()，Object.values()，Object.entries()"></a><code>Object.keys()</code>，<code>Object.values()</code>，<code>Object.entries()</code></h1><p>前面已经说过，<code>Object.keys()</code>方法返回一个数组，成员是参数对象自身所有可遍历属性的键名，与其配套的方法<code>Object.values()</code>，<code>Object.entries()</code>作为遍历对象的补充手段，供<code>for...of</code>循环使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">let &#123;keys, values, entries&#125; = Object;</div><div class="line">let obj = &#123; a: 1, b: 2, c: 3 &#125;;</div><div class="line"></div><div class="line">for (let key of keys(obj)) &#123;</div><div class="line">  console.log(key); // &apos;a&apos;, &apos;b&apos;, &apos;c&apos;</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (let value of values(obj)) &#123;</div><div class="line">  console.log(value); // 1, 2, 3</div><div class="line">&#125;</div><div class="line"></div><div class="line">for (let [key, value] of entries(obj)) &#123;</div><div class="line">  console.log([key, value]); // [&apos;a&apos;, 1], [&apos;b&apos;, 2], [&apos;c&apos;, 3]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h1 id="对象的扩展运算符"><a href="#对象的扩展运算符" class="headerlink" title="对象的扩展运算符"></a>对象的扩展运算符</h1><ul>
 <li><p>扩展运算符<code>...</code>用于取出参数对象的所有可遍历属性，拷贝到当前对象中</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">let z = &#123; a: 3, b: 4 &#125;;</div><div class="line">let n = &#123; ...z &#125;;</div><div class="line">n // &#123; a: 3, b: 4 &#125;</div><div class="line"></div><div class="line">let aClone = &#123; ...a &#125;;</div><div class="line">// 等同于</div><div class="line">let aClone = Object.assign(&#123;&#125;, a);</div></pre></td></tr></table></figure>
 </li>
@@ -383,7 +382,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">const o = Object.create(&#123; x: 1, y: 2 &#125;);</div><div class="line">o.z = 3;</div><div class="line"></div><div class="line">let &#123; x, ...&#123; y, z &#125; &#125; = o;</div><div class="line">x // 1(单纯的解构赋值)</div><div class="line">y // undefined</div><div class="line">z // 3</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<p>10、<code>Null传导运算符</code><br>实际项目中，如果读取对象内部的某个属性，往往需要判断一个该对象是否存在。比如，要读取<code>message.body.user.firstName</code>,安全的写法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const firstName = (message</div><div class="line">  &amp;&amp; message.body</div><div class="line">  &amp;&amp; message.body.user</div><div class="line">  &amp;&amp; message.body.user.firstName) || &apos;default&apos;;</div></pre></td></tr></table></figure></p>
+<h1 id="Null传导运算符"><a href="#Null传导运算符" class="headerlink" title="Null传导运算符"></a><code>Null传导运算符</code></h1><p>实际项目中，如果读取对象内部的某个属性，往往需要判断一个该对象是否存在。比如，要读取<code>message.body.user.firstName</code>,安全的写法为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">const firstName = (message</div><div class="line">  &amp;&amp; message.body</div><div class="line">  &amp;&amp; message.body.user</div><div class="line">  &amp;&amp; message.body.user.firstName) || &apos;default&apos;;</div></pre></td></tr></table></figure></p>
 <p>这样层层判断非常麻烦，由此引入<code>Null传导运算符</code>，简化上面的写法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">const firstName = message?.body?.user?.firstName || &apos;default&apos;;</div></pre></td></tr></table></figure></p>
 <p>上面三个<code>?.</code>运算符，主要有一个返回<code>null</code>或<code>undefined</code>,就不再往下运算，而是返回<code>undefined</code>,更多例子如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 如果 a 是 null 或 undefined, 返回 undefined</div><div class="line">// 否则返回 a.b.c().d</div><div class="line">a?.b.c().d</div><div class="line"></div><div class="line">// 如果 a 是 null 或 undefined，下面的语句不产生任何效果</div><div class="line">// 否则执行 a.b = 42</div><div class="line">a?.b = 42</div><div class="line"></div><div class="line">// 如果 a 是 null 或 undefined，下面的语句不产生任何效果</div><div class="line">delete a?.b</div></pre></td></tr></table></figure></p>
 
@@ -423,6 +422,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/04/20180104-ES6的Set和Map数据结构/" rel="prev" title="ES6的Set和Map数据结构">
+                ES6的Set和Map数据结构 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -490,7 +493,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-count">16</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -529,7 +532,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#简洁表示法"><span class="nav-number">1.</span> <span class="nav-text">简洁表示法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性名表达式"><span class="nav-number">2.</span> <span class="nav-text">属性名表达式</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#object-is"><span class="nav-number">3.</span> <span class="nav-text">object.is()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-assign"><span class="nav-number">4.</span> <span class="nav-text">Object.assign()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#属性的可枚举性和遍历"><span class="nav-number">5.</span> <span class="nav-text">属性的可枚举性和遍历</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#proto-属性，Object-setPrototypeOf-，Object-getPrototypeOf"><span class="nav-number">6.</span> <span class="nav-text">__proto__属性，Object.setPrototypeOf()，Object.getPrototypeOf()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#super关键字"><span class="nav-number">7.</span> <span class="nav-text">super关键字</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-keys-，Object-values-，Object-entries"><span class="nav-number">8.</span> <span class="nav-text">Object.keys()，Object.values()，Object.entries()</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#对象的扩展运算符"><span class="nav-number">9.</span> <span class="nav-text">对象的扩展运算符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Null传导运算符"><span class="nav-number">10.</span> <span class="nav-text">Null传导运算符</span></a></li></ol></div>
             
           </div>
         </section>
