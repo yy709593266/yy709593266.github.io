@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180326-223514@2x.png">
 <meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-224832@2x.png">
 <meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-231430@2x.png">
-<meta property="og:updated_time" content="2018-04-08T15:42:16.000Z">
+<meta property="og:updated_time" content="2018-05-08T14:56:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue+webpack如何配置">
 <meta name="twitter:description" content="通常，在新建一个项目的时候，我都是用直接用vue的脚手架来生成的，然后在里面添加内容即可。其实，对于它自动生成的东西我是不太懂的，也就只会写一些页面啊路由什么的，自动生成的一些webpack的配置之类的如果根据项目需求修改配置的话，我是一大脸懵逼的，这里不使用vue的脚手架，而是从零开始一步步的搭建一个vue+webpack的项目。">
@@ -340,7 +340,7 @@
 <h3 id="如何从零开始一个vue-webpack的项目"><a href="#如何从零开始一个vue-webpack的项目" class="headerlink" title="如何从零开始一个vue+webpack的项目"></a>如何从零开始一个vue+webpack的项目</h3><p>1、新建一个项目文件夹（vue+webpack_config），然后在该文件夹下初始化一个项目<br><code>npm init</code><br>初始化过程中出现的选项可以自行填一下，最后选择yes后会在项目文件夹下生成一个package.json文件</p>
 <p>2、安装我们这个项目的基本模块vue和webpack，安装vue的话又需要安装vue-loader<br><code>npm i webpack vue vue-loader --save</code><br>安装完成后会自动生成一个node-modules文件夹<br>（另：–save安装的插件会被写入到dependencies对象中，–save-dev安装的插件会被写入到devDependencies对象中，devDependencies里面的插件只用于开发环境，不用于生产环境，而 dependencies是需要发布到生产环境的，虽然我还没弄明白为什么开发环境需要的东西生产环境下竟然会不需要。。。）</p>
 <p>3、安装完会出现一个npm的warn，让我们安装css-loader、vue-tamplate-compiler依赖，根据提示继续安装<br><code>npm i css-loader vue-template-compiler --save</code><br>到此，基本的一个项目初始化雏形完成<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/vuewebpack1.jpeg" alt=""></p>
-<h3 id="这里主要讲解如何配置webpack来加载我们的非js的静态文件"><a href="#这里主要讲解如何配置webpack来加载我们的非js的静态文件" class="headerlink" title="这里主要讲解如何配置webpack来加载我们的非js的静态文件"></a>这里主要讲解如何配置webpack来加载我们的非js的静态文件</h3><p>4、下面是项目文件，首先新建一个文件夹，用来存放源码（src）</p>
+<h3 id="如何配置webpack来加载我们的非js的静态文件"><a href="#如何配置webpack来加载我们的非js的静态文件" class="headerlink" title="如何配置webpack来加载我们的非js的静态文件"></a>如何配置webpack来加载我们的非js的静态文件</h3><p>4、下面是项目文件，首先新建一个文件夹，用来存放源码（src）</p>
 <ul>
 <li>首先在src目录下新建一个app.vue文件，并且在该文件中把vue的基本结构写好，vue的文件格式由template、script和style组成，这里写一个测试的页面如下<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180314-220521@2x.png" alt=""><br>但是我们的浏览器是不能直接运行vue文件的(可以直接运行html文件)，所以下面我们需要解决的问题就是如何让这个文件可以运行在浏览器中</li>
 <li>新建一个webpack.config.js文件和src文件夹平级，用来打包我们的前端资源（包括js,css,图片，字体等），这些资源都是需要通过http请求去加载的，这些加载可以使用一个js文件作为入口，并在webpack.config.js文件中进行配置，我们将入口文件定义在src文件夹下，命名为index.js<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180314-230019@2x.png" alt=""></li>
@@ -358,7 +358,7 @@
 <p>同样的，写完以后还需要在入口文件index.js中引入该文件（同引入<code>test.css</code>文件方法一样）<br>最后进行<code>npm run build</code>打包，发现在打包后的bundle.js中已经将styl文件中的<code>font-size：20px</code>处理成css内容并写入其中</p>
 </li>
 </ul>
-<h3 id="这里主要讲解如何配置webpack-dev-server来使我们的开发效率提高"><a href="#这里主要讲解如何配置webpack-dev-server来使我们的开发效率提高" class="headerlink" title="这里主要讲解如何配置webpack-dev-server来使我们的开发效率提高"></a>这里主要讲解如何配置webpack-dev-server来使我们的开发效率提高</h3><ul>
+<h3 id="如何配置webpack-dev-server来使我们的开发效率提高"><a href="#如何配置webpack-dev-server来使我们的开发效率提高" class="headerlink" title="如何配置webpack-dev-server来使我们的开发效率提高"></a>如何配置webpack-dev-server来使我们的开发效率提高</h3><ul>
 <li>webpack-dev-server其实是webpack的包，既然说是包了，当然首先得安装，命令行首先得搞起<code>npm i webpack-dev-server</code></li>
 <li>安装完成之后，在package.js中做如下改动：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180319-234602@2x.png" alt=""><br>上一句的build是使用webpack去启动了webpack.config.js文件<br>下面的dev就是使用webpack-dev-server,去启动这个配置文件来为我们的项目代码进行打包，使用webpack-dev-server会带给和webpack处理不一样的效果，是专门用于开发环境的<br>因为我们使用的是同一个配置文件，因此对于这个webpack.config.js配置文件，我们还需要增加一些专门的配置来适应webpack-dev-server启动的开发模式：<br>首先就是在webpack.config.js中的module.exports对象中添加一行<code>target:web</code>，表示我们是要在浏览器中运行的<br>然后，因为这个配置文件我们是需要用在正式环境和开发环境下的，所以需要对于不同的环境我们需要在配置文件中作出判断，那么如何作出判断呢：这里我们先安装一个npm的包<code>npm i cross-env</code>,这个包是用来兼容window和Mac不同系统上定义环境变量的方法，安装完成后就可以统一设置环境变量了，如下：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180326-215644@2x.png" alt=""></li>
 <li>如此,使用<code>NODE_ENV</code>变量就可以用来区分开发环境和正式环境了，现在就可以在公用的config的配置文件中对开发环境和正式环境作不同的判断从而配置不同的内容：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180326-221008@2x.png" alt=""></li>
@@ -402,6 +402,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/29/20180529-vue生命周期钩子/" rel="prev" title="vue生命周期钩子">
+                vue生命周期钩子 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -469,7 +473,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -508,7 +512,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何从零开始一个vue-webpack的项目"><span class="nav-number">1.</span> <span class="nav-text">如何从零开始一个vue+webpack的项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这里主要讲解如何配置webpack来加载我们的非js的静态文件"><span class="nav-number">2.</span> <span class="nav-text">这里主要讲解如何配置webpack来加载我们的非js的静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#这里主要讲解如何配置webpack-dev-server来使我们的开发效率提高"><span class="nav-number">3.</span> <span class="nav-text">这里主要讲解如何配置webpack-dev-server来使我们的开发效率提高</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#如何从零开始一个vue-webpack的项目"><span class="nav-number">1.</span> <span class="nav-text">如何从零开始一个vue+webpack的项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何配置webpack来加载我们的非js的静态文件"><span class="nav-number">2.</span> <span class="nav-text">如何配置webpack来加载我们的非js的静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何配置webpack-dev-server来使我们的开发效率提高"><span class="nav-number">3.</span> <span class="nav-text">如何配置webpack-dev-server来使我们的开发效率提高</span></a></li></ol></div>
             
           </div>
         </section>
