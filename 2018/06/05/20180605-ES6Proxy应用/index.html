@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="2018年开始第一篇博客，这半个多月都没什么事情，自己琢磨了下零售云和地产云的项目后，想自己搞搞清楚整个的搭建过程，学习之余试试把信息发布系统搞起来，但是为什么没写这些还是选择继续看看ES6呢？">
+<meta name="description" content="proxy从字面意思就能看出：代理，也就是代理操作，在目标前进行一次“拦截”，外界对该对象的访问都必须先通过这一层“拦截”从而对外界的访问进行一个过滤处理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ES6的Set和Map数据结构">
-<meta property="og:url" content="http://yy709593266.github.io/blog/2018/01/04/20180104-ES6的Set和Map数据结构/index.html">
+<meta property="og:title" content="20180605-ES6Proxy应用">
+<meta property="og:url" content="http://yy709593266.github.io/blog/2018/06/05/20180605-ES6Proxy应用/index.html">
 <meta property="og:site_name" content="袁媛-仙女很忙">
-<meta property="og:description" content="2018年开始第一篇博客，这半个多月都没什么事情，自己琢磨了下零售云和地产云的项目后，想自己搞搞清楚整个的搭建过程，学习之余试试把信息发布系统搞起来，但是为什么没写这些还是选择继续看看ES6呢？">
-<meta property="og:updated_time" content="2018-01-14T13:15:54.000Z">
+<meta property="og:description" content="proxy从字面意思就能看出：代理，也就是代理操作，在目标前进行一次“拦截”，外界对该对象的访问都必须先通过这一层“拦截”从而对外界的访问进行一个过滤处理。">
+<meta property="og:updated_time" content="2018-06-06T14:17:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ES6的Set和Map数据结构">
-<meta name="twitter:description" content="2018年开始第一篇博客，这半个多月都没什么事情，自己琢磨了下零售云和地产云的项目后，想自己搞搞清楚整个的搭建过程，学习之余试试把信息发布系统搞起来，但是为什么没写这些还是选择继续看看ES6呢？">
+<meta name="twitter:title" content="20180605-ES6Proxy应用">
+<meta name="twitter:description" content="proxy从字面意思就能看出：代理，也就是代理操作，在目标前进行一次“拦截”，外界对该对象的访问都必须先通过这一层“拦截”从而对外界的访问进行一个过滤处理。">
 
 
 
@@ -114,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://yy709593266.github.io/blog/2018/01/04/20180104-ES6的Set和Map数据结构/"/>
+  <link rel="canonical" href="http://yy709593266.github.io/blog/2018/06/05/20180605-ES6Proxy应用/"/>
 
-  <title> ES6的Set和Map数据结构 | 袁媛-仙女很忙 </title>
+  <title> 20180605-ES6Proxy应用 | 袁媛-仙女很忙 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +279,7 @@
             
             
               
-                ES6的Set和Map数据结构
+                20180605-ES6Proxy应用
               
             
           </h1>
@@ -291,8 +291,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2018-01-04T23:16:08+08:00" content="2018-01-04">
-              2018-01-04
+            <time itemprop="dateCreated" datetime="2018-06-05T23:14:39+08:00" content="2018-06-05">
+              2018-06-05
             </time>
           </span>
 
@@ -319,65 +319,9 @@
       
 
       
-        <p>2018年开始第一篇博客，这半个多月都没什么事情，自己琢磨了下零售云和地产云的项目后，想自己搞搞清楚整个的搭建过程，学习之余试试把信息发布系统搞起来，但是为什么没写这些还是选择继续看看ES6呢？<a id="more"></a>答案就是：因为我还不会！对，就是理直气壮，好了，现在开始。。。ES6提供的新的数据结构：Set 和 Map </p>
-<h1 id="Set"><a href="#Set" class="headerlink" title="Set"></a><code>Set</code></h1><p><code>Set</code>类似于数组，但是成员值都是唯一的，没有重复的值(所以可以用来去除数组重复成员的方法)，它本身是一个构造函数，可以用来生成数据实例，或者接受一个数组为参数来初始化一个实例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">const set = new Set([1, 2, 3, 4, 4]);</div><div class="line">[...set]</div><div class="line">// [1, 2, 3, 4]</div></pre></td></tr></table></figure></p>
-<p>注：使用<code>Set</code>添加的值不会发生类型转换，所以<code>5</code>和<code>“5”</code>是两个不同的值（但是所有<code>NaN</code>都是相等的，两个对象<code>{}</code>都是不相等的）</p>
-<p>1、<code>Set</code>实例属性和方法</p>
-<ul>
-<li><code>Set.prototype.size</code>：返回<code>Set</code>实例的成员总数</li>
-<li><code>add(value)</code>：添加某个值，返回<code>Set</code>结构本身</li>
-<li><code>delete(value)</code>：删除某个值，返回一个布尔值，表示删除是否成功</li>
-<li><code>has(value)</code>：返回一个布尔值，表示该值是否为<code>Set</code>的成员</li>
-<li><code>clear()</code>：清除所有成员，没有返回值。<br>注： <code>Array.from</code>方法可以将<code>Set</code>结构转为数组,这就为数组去重提供了另一种方式</li>
-</ul>
-<p>2、遍历操作<br><code>Set</code>结构的遍历方法有四个：</p>
-<ul>
-<li><code>keys()</code>：返回键名的遍历器</li>
-<li><code>values()</code>：返回键值的遍历器（由于Set结构没有键名，所以该方法和<code>keys</code>方法行为一致，且默认遍历执行的是<code>values</code>）</li>
-<li><code>entries()</code>：返回键值对的遍历器</li>
-<li><code>forEach()</code>：使用回调函数遍历每个成员<br>注：<code>Set</code>的遍历顺序是按照插入顺序的，这个特性有时非常有用，比如使用Set保存一个回调函数列表，调用时就能保证按照添加的顺序调用</li>
-</ul>
-<h1 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a><code>WeakSet</code></h1><p>WeakSet 结构与Set类似，也是不重复的值的集合。但是，它与Set有两个区别：</p>
-<ul>
-<li>首先，WeakSet的成员只能是对象，而不能是其他类型的值；</li>
-<li>其次，WeakSet中的对象都是弱引用，即垃圾回收机制不考虑WeakSet对该对象的引用，也就是说，如果其他对象都不再引用该对象，那么垃圾回收机制会自动回收该对象所占用的内存，不考虑该对象还存在于WeakSet之中，所以它适合临时存放对象，以及存放跟对象绑定的信息，只要这些对象在外部消失，它在WeakSet里面的引用就会自动消失（因此，WeakSet成员不适合引用）。</li>
-</ul>
-<p>1、语法</p>
-<ul>
-<li>WeakSet是一个构造函数，一样可以使用<code>new</code>命令创建一个数据结构，同时接受一个数组或类似数组的对象作为参数，该数组的所有成员（注：不是该数组本身）都会自动成为该实例对象的成员，由于WeakSet的成员只能是对象，所有传进来的数组参数的成员必须是对象（数组也行）;</li>
-<li><code>WeakSet.prototype.add(value)</code>：向 WeakSet 实例添加一个新成员;</li>
-<li><code>WeakSet.prototype.delete(value)</code>：清除 WeakSet 实例的指定成员;</li>
-<li><code>WeakSet.prototype.has(value)</code>：返回一个布尔值，表示某个值是否在 WeakSet 实例之中</li>
-<li>WeakSet 没有<code>size</code>属性，所以没有办法遍历它的成员(因为成员都是弱引用，随时可能消失，遍历机制无法保证成员的存在，很可能刚刚遍历结束，成员就取不到了。WeakSet 的一个用处，是储存 DOM 节点，而不用担心这些节点从文档移除时，会引发内存泄漏。)<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const ws = new WeakSet();</div><div class="line">const obj = &#123;&#125;;</div><div class="line">ws.add(obj);</div><div class="line"></div><div class="line">ws.size // undefined</div><div class="line">ws.forEach // undefined</div><div class="line">ws.forEach(function(item)&#123; console.log(&apos;WeakSet has &apos; + item)&#125;)</div><div class="line">// TypeError: undefined is not a function</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>看下面一个例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">const foos = new WeakSet()</div><div class="line">class Foo &#123;</div><div class="line">  constructor() &#123;</div><div class="line">    foos.add(this)</div><div class="line">  &#125;</div><div class="line">  method () &#123;</div><div class="line">    if (!foos.has(this)) &#123;</div><div class="line">      throw new TypeError(&apos;Foo.prototype.method 只能在Foo的实例上调用！&apos;);</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>上面代码保证了<code>Foo</code>的实例方法，只能在<code>Foo</code>的实例上调用。这里使用 WeakSet 的好处是，<code>foos</code>对实例的引用，不会被计入内存回收机制，所以删除实例的时候，不用考虑<code>foos</code>，也不会出现内存泄漏。</p>
-<h1 id="Map"><a href="#Map" class="headerlink" title="Map"></a><code>Map</code></h1><p>已知js对象的本质是键值对的集合，但是传统的只能用字符串当作键，这给它的使用带来了很大的限制，为了解决这个问题，ES6提供了Map数据结构，它也是键值对的集合，但是“键”的范围更广，各种类型都可以，是一种更完善的Hash结构。<br>作为构造函数，Map也可以接受一个数组作为参数，该数组成员是一个个表示键值对的数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">const map = new Map([</div><div class="line">  [&apos;name&apos;, &apos;张三&apos;],</div><div class="line">  [&apos;title&apos;, &apos;Author&apos;]</div><div class="line">]);</div><div class="line"></div><div class="line">map.size // 2</div><div class="line">map.has(&apos;name&apos;) // true</div><div class="line">map.get(&apos;name&apos;) // &quot;张三&quot;</div><div class="line">map.has(&apos;title&apos;) // true</div><div class="line">map.get(&apos;title&apos;) // &quot;Author&quot;</div></pre></td></tr></table></figure></p>
-<p>Map结构同样有以下几个属性和方法：</p>
-<ul>
-<li><code>size</code>属性，返回Map结构的成员总数</li>
-<li><code>set(key,value)</code>(set方法返回的是当前的Map对象，因此可以采用链式调用)</li>
-<li><code>get(key)</code></li>
-<li><code>has(key)</code></li>
-<li><code>delete(key)</code></li>
-<li><code>clear()</code>清除所有成员，没有返回值</li>
-<li><code>keys()</code>，返回键名的遍历器</li>
-<li><code>values()</code>返回键值的遍历器</li>
-<li><code>entries()</code>返回所有成员的遍历器</li>
-<li><code>forEach()</code>遍历Map的所有成员（还可以接受第二个参数，用来绑定<code>this</code>）</li>
-<li><p>Map结构转为数组结构比较快速的方法是使用扩展运算符<code>...</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">const map = new Map([</div><div class="line">  [1, &apos;one&apos;],</div><div class="line">  [2, &apos;two&apos;],</div><div class="line">  [3, &apos;three&apos;],</div><div class="line">]);</div><div class="line"></div><div class="line">[...map.keys()]</div><div class="line">// [1, 2, 3]</div></pre></td></tr></table></figure>
-</li>
-<li><p>结合数组的<code>map</code>方法和<code>filter</code>方法，可以实现Map的遍历和过滤</p>
-</li>
-</ul>
-<h1 id="WeakMap"><a href="#WeakMap" class="headerlink" title="WeakMap"></a><code>WeakMap</code></h1><p><code>WeakMap</code>结构和<code>Map</code>结构类似，也是用于生成键值对的集合，但是与<code>Map</code>也有区别：</p>
-<ul>
-<li>首先，<code>WeakMap</code>只接受对象作为键名</li>
-<li>其次，它的键名所指向的对象，不计入垃圾回收机制（也就是说WeapMap里面的键名对象和所应用的键值对会自动消失，不用手动删除引用）</li>
-<li>WeakMap与Map在API上的区别主要是，一是没有遍历操作（没有<code>key()</code>、<code>values()</code>、<code>entries()</code>、<code>size</code>属性），只有<code>get()</code>、<code>set()</code>、<code>has()</code>、<code>delete()</code>方法。</li>
-</ul>
+        <p><code>proxy</code>从字面意思就能看出：代理，也就是代理操作，在目标前进行一次“拦截”，外界对该对象的访问都必须先通过这一层“拦截”从而对外界的访问进行一个过滤处理。<a id="more"></a></p>
+<h3 id="Proxy构造函数"><a href="#Proxy构造函数" class="headerlink" title="Proxy构造函数"></a>Proxy构造函数</h3><p>既然Proxy是构造函数，那就可以生成Proxy实例来进行使用<code>new Proxy(target, handler)</code>，其中<code>target</code>表示所要拦截的目标对象，<code>handler</code>也是一个对象，用来定制拦截行为</p>
+<p><a href="http://es6.ruanyifeng.com/#docs/proxy" target="_blank" rel="external">来源</a></p>
 
       
     </div>
@@ -408,17 +352,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/12/03/20171203-ES6对象的扩展/" rel="next" title="对象的扩展">
-                <i class="fa fa-chevron-left"></i> 对象的扩展
+              <a href="/2018/06/03/20180603-node基础/" rel="next" title="Node基础">
+                <i class="fa fa-chevron-left"></i> Node基础
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/14/20180114-ES6Promise对象/" rel="prev" title="ES6Promise对象">
-                ES6Promise对象 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -486,7 +426,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -496,7 +436,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -525,7 +465,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Set"><span class="nav-number">1.</span> <span class="nav-text">Set</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WeakSet"><span class="nav-number">2.</span> <span class="nav-text">WeakSet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Map"><span class="nav-number">3.</span> <span class="nav-text">Map</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WeakMap"><span class="nav-number">4.</span> <span class="nav-text">WeakMap</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Proxy构造函数"><span class="nav-number">1.</span> <span class="nav-text">Proxy构造函数</span></a></li></ol></div>
             
           </div>
         </section>
