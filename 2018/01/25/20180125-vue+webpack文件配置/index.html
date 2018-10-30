@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180326-223514@2x.png">
 <meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-224832@2x.png">
 <meta property="og:image" content="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-231430@2x.png">
-<meta property="og:updated_time" content="2018-05-08T14:56:50.000Z">
+<meta property="og:updated_time" content="2018-10-30T14:34:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue+webpack如何配置">
 <meta name="twitter:description" content="通常，在新建一个项目的时候，我都是用直接用vue的脚手架来生成的，然后在里面添加内容即可。其实，对于它自动生成的东西我是不太懂的，也就只会写一些页面啊路由什么的，自动生成的一些webpack的配置之类的如果根据项目需求修改配置的话，我是一大脸懵逼的，这里不使用vue的脚手架，而是从零开始一步步的搭建一个vue+webpack的项目。">
@@ -363,7 +363,7 @@
 <li>安装完成之后，在package.js中做如下改动：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180319-234602@2x.png" alt=""><br>上一句的build是使用webpack去启动了webpack.config.js文件<br>下面的dev就是使用webpack-dev-server,去启动这个配置文件来为我们的项目代码进行打包，使用webpack-dev-server会带给和webpack处理不一样的效果，是专门用于开发环境的<br>因为我们使用的是同一个配置文件，因此对于这个webpack.config.js配置文件，我们还需要增加一些专门的配置来适应webpack-dev-server启动的开发模式：<br>首先就是在webpack.config.js中的module.exports对象中添加一行<code>target:web</code>，表示我们是要在浏览器中运行的<br>然后，因为这个配置文件我们是需要用在正式环境和开发环境下的，所以需要对于不同的环境我们需要在配置文件中作出判断，那么如何作出判断呢：这里我们先安装一个npm的包<code>npm i cross-env</code>,这个包是用来兼容window和Mac不同系统上定义环境变量的方法，安装完成后就可以统一设置环境变量了，如下：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180326-215644@2x.png" alt=""></li>
 <li>如此,使用<code>NODE_ENV</code>变量就可以用来区分开发环境和正式环境了，现在就可以在公用的config的配置文件中对开发环境和正式环境作不同的判断从而配置不同的内容：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180326-221008@2x.png" alt=""></li>
 <li>目前为止，我们编译的结果中(dist目录下)只有js文件和图片，没有一个html可以容纳js文件，也就是我们还看不到我们的页面内容项目还跑不起来，因此我们需要一个html作为我们项目页面的入口。下面的问题就是我们如何在项目中添加html文件而且还能让它包含我们的js？<br>答案：我们在项目中安装一个webpack的包(<code>npm i html-webpack-plugin</code>)，并在配置文件webpack.config.js中引入和进行相关配置<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180326-223514@2x.png" alt=""></li>
-<li>运行代码，<code>npm run dev</code>报错如下：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-224832@2x.png" alt=""><br>有猿友说如果你的webpack-dev-server是2.x的，就要安装3.x的webpack，如果你的webpack-dev-server是3.x的就需要安装4.x的webpack，看了一下我的webpack-dev-server是3.x的，果断降级了webpack-dev-server的版本<code>npm i webpack-dev-server@^2</code>，就不会报这个错了（本来是想升级webpack的版本的，但是看到说是升级会出现一堆坑，果然选择了捷径，果然一次就成功了。后面有时间的话试一下升级，踩一下那些坑）。下面是成功后的结果，果然好看了很多，哈哈哈<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-231430@2x.png" alt=""><br>下面直接访问localhost:8000就能看到浏览器可以运行我们的内容了。。。。。。<br>到此为止，vue和webpack的的基本配置已经结束了，没有使用vue-cli也可以运行vue文件了！</li>
+<li>运行代码，<code>npm run dev</code>报错如下：<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-224832@2x.png" alt=""><br>有猿友说如果你的webpack-dev-server是2.x的，就要安装3.x的webpack，如果你的webpack-dev-server是3.x的就需要安装4.x的webpack，看了一下我的webpack-dev-server是3.x的，果断降级了webpack-dev-server的版本<code>npm i webpack-dev-server@^2</code>，就不会报这个错了（本来是想升级webpack的版本的，但是看到说是升级会出现一堆坑，果然选择了捷径，果然一次就成功了。后面有时间的话试一下升级，踩一下那些坑）。下面是成功后的结果，果然好看了很多，哈哈哈<br><img src="http://7xvmm0.com1.z0.glb.clouddn.com/WX20180408-231430@2x.png" alt=""><br>下面直接访问localhost:8000就能看到浏览器可以运行我们的内容了。。。。。。<br>到此为止，vue和webpack的的基本配置已经结束了，没有使用vue-cli也可以运行vue文件了！<br><a href="https://github.com/yy709593266/vue_webpack-config" target="_blank" rel="external">代码下载</a></li>
 </ul>
 
       
